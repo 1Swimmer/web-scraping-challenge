@@ -28,10 +28,6 @@ def scrape():
 
     featured_image_url = 'https://www.jpl.nasa.gov/spaceimages/?search=&category=Mars'
 
-    mars_weather = 'InSight sol 708 (2020-11-22) low -93.2ºC (-135.8ºF) high -8.2ºC (17.2ºF) winds from the W at 6.0 m/s (13.4 mph) gusting to 20.2 m/s (45.2 mph) pressure at 7.40 hPa'
-
-    featured_image_url = 'https://www.jpl.nasa.gov/spaceimages/?search=&category=Mars'
-
     browser.visit(featured_image_url)
 
     clickingimg=browser.find_by_id('full_image')
@@ -97,7 +93,6 @@ def scrape():
         "paragraph": news_p,
         "print_image_url": featured_image_url,
         'featured_image_title': featured_image_title,
-        "mars_weather": mars_weather,
         "mars_df": marsdf,
         "mars_hemi": hemisphere_image_urls,
     }
