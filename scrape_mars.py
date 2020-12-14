@@ -8,9 +8,14 @@ import os
 from splinter import Browser
 from splinter.exceptions import ElementDoesNotExist
 
+def init_browser():
+    executable_path = {"executable_path": "chromedriver.exe"}
+    return Browser("chrome", **executable_path, headless=False)
+
 def scrape():
-    executable_path = {'executable_path': 'chromedriver.exe'}
-    browser = Browser('chrome', **executable_path, headless=False)
+    browser=init_browser()
+    # """ executable_path = {'executable_path': 'chromedriver.exe'}
+    # browser = Browser('chrome', **executable_path, headless=False) """
 
     marsnewsURL = 'https://mars.nasa.gov/news/?page=0&per_page=40&order=publish_date+desc%2Ccreated_at+desc&search=&category=19%2C165%2C184%2C204&blank_scope=Latest'
     browser.visit(marsnewsURL)
@@ -46,9 +51,9 @@ def scrape():
     allimagesURL
 
     featured_image_url = 'https://www.jpl.nasa.gov'+ allimagesURL
-    featured_image_title = soup1 .find('h1', class_="media_feature_title").text.strip()
+    #featured_image_title = soup1 .find('h1', class_="media_feature_title").text.strip()
     featured_image_url
-    featured_image_title
+    #featured_image_title
 
     marsurl = 'https://space-facts.com/mars/'
     table = pd.read_html(marsurl)
@@ -92,8 +97,8 @@ def scrape():
         "title": news_title,
         "paragraph": news_p,
         "print_image_url": featured_image_url,
-        'featured_image_title': featured_image_title,
-        "mars_df": marsdf,
+       # 'featured_image_title': featured_image_title,
+        "mars_df": html_table,
         "mars_hemi": hemisphere_image_urls,
     }
 
